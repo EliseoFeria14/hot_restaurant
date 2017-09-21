@@ -5,6 +5,8 @@
 	<title>RESERVE TABLE</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 	<!-- jQuery CDN -->
 	<script
   	src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -14,5 +16,88 @@
 </head>
 <body>
 
+<div class="container">
+		<div class="jumbotron">
+			<h1 class="text-center">
+				<span class ="glyphicon glyphicon-fire"></span>HOT RESTUARANT
+			</h1>
+			<hr>
+			<h2 class="text-center">
+				Make a Reservation
+			</h2>
+			<div class="row">
+	
+			</div>
+
+		</div>
+	</div>
+
+
+<div class ="container">
+<div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Table Reservation</strong></h3>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email">
+              </div>
+
+              <div class="form-group">
+                <label for="uniqueID">Unique ID</label>
+                <input type="text" class="form-control" id="uniqueID">
+              </div>
+
+            </form>
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"></span> Submit</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+
+      var newReservation = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#uniqueID").val().trim()
+      };
+
+      
+      $.post("/api/new", newReservation)
+      .done(function(data) {
+        console.log(data);
+        alert("Your reservation is set...");
+      });
+
+    });
+  </script>
 </body>
 </html>
+
